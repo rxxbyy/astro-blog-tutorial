@@ -1,6 +1,6 @@
 ---
 import Footer from '../components/Footer.astro';
-import Navigation from '../components/Navigation.astro';
+import Header from '../components/Header.astro';
 import '../styles/global.css';
 
 const pageTitle: string = "About Me";
@@ -49,7 +49,11 @@ const textCase = "uppercase"
 				font-size: 4rem;
 				text-align: center;
 			}
-
+			
+			.skills-section {
+				display: flex;
+				
+			}
 			.skills {
 				display: flex;
 				list-style: none;
@@ -59,12 +63,24 @@ const textCase = "uppercase"
 				padding: 0.5rem 0.2rem;
 				background-color: #310e0e;
 				color: white;
-				margin-left: 10px;
+				margin-left: 2px;
+			}
+
+			@media screen and (max-width: 600px) {
+				.skills {
+					flex-direction: column;
+					justify-items: center;
+					text-align: center;
+				}
+
+				.skill {
+					align-content: center;
+				}
 			}
 		</style>
 	</head>
 	<body>
-		<Navigation />
+		<Header />
 
 		<h1>{pageTitle}</h1>
 
@@ -76,11 +92,11 @@ const textCase = "uppercase"
 				<li>Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}.</li>
 			}
 		</ul>
-		<p>My skills are:</p>
-		<ul class="skills">
-			{skills.map((skill) => <li class="skill">{skill}</li>)}
-		</ul>
-
+		<section class="skills-section">
+			<ul class="skills">
+				{skills.map((skill) => <li class="skill">{skill}</li>)}
+			</ul>
+		</section>
 		<Footer />
 	</body>
 </html>

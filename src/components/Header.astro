@@ -1,16 +1,20 @@
 ---
 ---
-<nav class="nav">
-    <a href="/">Home</a>
-    <a href="/about/">About</a>
-    <a href="/blog/">Blog</a>
-</nav>
-
+<header>
+    <nav class="nav">
+        <a href="/">Home</a>
+        <a href="/about/">About</a>
+        <a href="/blog/">Blog</a>
+    </nav>
+</header>
 
 <style>
-    nav {
+    header {
         display: flex;
         flex-direction: row;
+    }
+    nav {
+        display: flex;
         width: 100%;
         padding: 0.5rem;
         background-color: #1b1b1b;
@@ -27,5 +31,15 @@
 
     nav a:hover {
         background-color: #000;
+    }
+
+    @media screen and (max-width: 636px) {
+        header {
+            flex-direction: column;
+        }
+
+        nav {
+            flex-direction: column;
+        }
     }
 </style>
