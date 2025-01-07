@@ -45,14 +45,21 @@ const textCase = "uppercase"
 		<title>{pageTitle}</title>
 		<style define:vars={{skillColor, fontWeight, textCase}}>
 			h1 {
-				color: red;
+				color: black;
 				font-size: 4rem;
+				text-align: center;
 			}
 
+			.skills {
+				display: flex;
+				list-style: none;
+				flex-direction: row;
+			}
 			.skill {
-				color: var(--skillColor);
-				font-weight: var(--fontWeight);
-				text-transform: var(--textCase);
+				padding: 0.5rem 0.2rem;
+				background-color: #310e0e;
+				color: white;
+				margin-left: 10px;
 			}
 		</style>
 	</head>
@@ -70,7 +77,7 @@ const textCase = "uppercase"
 			}
 		</ul>
 		<p>My skills are:</p>
-		<ul>
+		<ul class="skills">
 			{skills.map((skill) => <li class="skill">{skill}</li>)}
 		</ul>
 

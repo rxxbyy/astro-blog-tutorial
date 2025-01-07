@@ -1,5 +1,31 @@
 ---
 ---
-<a href="/">Home</a>
-<a href="/about/">About</a>
-<a href="/blog/">Blog</a>
+<nav class="nav">
+    <a href="/">Home</a>
+    <a href="/about/">About</a>
+    <a href="/blog/">Blog</a>
+</nav>
+
+
+<style>
+    nav {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        padding: 0.5rem;
+        background-color: #1b1b1b;
+    }
+
+    nav a {
+        display: flex;
+        padding: 0.5rem;
+        justify-items: center;
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    nav a:hover {
+        background-color: #000;
+    }
+</style>
