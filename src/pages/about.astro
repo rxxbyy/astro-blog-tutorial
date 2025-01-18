@@ -1,7 +1,5 @@
 ---
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
-import '../styles/global.css';
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 const pageTitle: string = "About Me";
 
@@ -17,7 +15,7 @@ const identity: {
 	hobbies: ["workout", "read", "produce music"],
 };
 
-const skills = [
+const skills: Array<string> = [
 	"HTML",
 	"CSS",
 	"JavaScript",
@@ -31,72 +29,58 @@ const skills = [
 	"Git",
 ];
 
-const skillColor = "navy";
-const fontWeight = "bold";
-const textCase = "uppercase"
+const skillColor: string = "white";
+const fontWeight: string = "bold";
+const textCase: string = "uppercase"
 ---
+<BaseLayout pageTitle={pageTitle}>
+	<style is:global define:vars={{skillColor, fontWeight, textCase}}>
+		h1 {
+			color: black;
+			font-size: 4rem;
+			text-align: center;
+		}
+		
+		.skills-section {
+			display: flex;
+			
+		}
+		.skills {
+			display: flex;
+			list-style: none;
+			flex-direction: row;
+		}
+		.skill {
+			padding: 0.5rem 0.2rem;
+			background-color: #310e0e;
+			color: var(--skillColor);
+			margin-left: 2px;
+			font-weight: var(--fontWeight);
+		}
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{pageTitle}</title>
-		<style define:vars={{skillColor, fontWeight, textCase}}>
-			h1 {
-				color: black;
-				font-size: 4rem;
+		@media screen and (max-width: 600px) {
+			.skills {
+				flex-direction: column;
+				justify-items: center;
 				text-align: center;
 			}
-			
-			.skills-section {
-				display: flex;
-				
-			}
-			.skills {
-				display: flex;
-				list-style: none;
-				flex-direction: row;
-			}
+
 			.skill {
-				padding: 0.5rem 0.2rem;
-				background-color: #310e0e;
-				color: white;
-				margin-left: 2px;
+				align-content: center;
 			}
-
-			@media screen and (max-width: 600px) {
-				.skills {
-					flex-direction: column;
-					justify-items: center;
-					text-align: center;
-				}
-
-				.skill {
-					align-content: center;
-				}
-			}
-		</style>
-	</head>
-	<body>
-		<Header />
-
-		<h1>{pageTitle}</h1>
-
-		<p>Here are a few facts about me:</p>
-		<ul>
-			<li>My name is {identity.firstName}.</li>
-			<li>I live in {identity.country} and I am a {identity.occupation}.</li>
-			{identity.hobbies.length >= 2 &&
-				<li>Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}.</li>
-			}
+		}
+	</style>
+	<p>Here are a few facts about me:</p>
+	<ul>
+		<li>My name is {identity.firstName}.</li>
+		<li>I live in {identity.country} and I am a {identity.occupation}.</li>
+		{identity.hobbies.length >= 2 &&
+			<li>Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}.</li>
+		}
+	</ul>
+	<section class="skills-section">
+		<ul class="skills">
+			{skills.map((skill) => <li class="skill">{skill}</li>)}
 		</ul>
-		<section class="skills-section">
-			<ul class="skills">
-				{skills.map((skill) => <li class="skill">{skill}</li>)}
-			</ul>
-		</section>
-		<Footer />
-	</body>
-</html>
+	</section>
+</BaseLayout>

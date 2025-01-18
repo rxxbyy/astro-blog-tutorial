@@ -1,7 +1,9 @@
 ---
+import Hamburger from './Hamburger.astro';
 ---
 <header>
-    <nav class="nav">
+    <Hamburger />
+    <nav class="nav-links ">
         <a href="/">Home</a>
         <a href="/about/">About</a>
         <a href="/blog/">Blog</a>
@@ -33,6 +35,23 @@
         background-color: #000;
     }
 
+    .expanded {
+        display: unset;
+    }
+
+    .hamburger {
+        padding-right: 20px;
+        cursor: pointer;
+    }
+
+    .hamburger .line {
+        display: block;
+        width: 40px;
+        height: 5px;
+        margin-bottom: 10px;
+        background-color: #ff9776;
+    }
+
     @media screen and (max-width: 636px) {
         header {
             flex-direction: column;
@@ -40,6 +59,10 @@
 
         nav {
             flex-direction: column;
+        }
+
+        .hamburger {
+            display: none;
         }
     }
 </style>
