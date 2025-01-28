@@ -1,7 +1,8 @@
 ---
+import BaseLayout from './BaseLayout.astro';
 const { frontmatter }: Record<string, any> = Astro.props;
 ---
-<h1>{frontmatter.title}</h1>
+<BaseLayout pageTitle={frontmatter.title}>
 <p>Written by {frontmatter.author} on {frontmatter.pubDate.toString().slice(0, 10)}</p>
 <slot />
-
+</BaseLayout>
