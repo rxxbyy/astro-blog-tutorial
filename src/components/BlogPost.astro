@@ -1,0 +1,26 @@
+---
+const { url, title } = Astro.props;
+---
+<div class="blog-post">
+    <a href={url}>{title}</a>
+</div>
+
+<style>
+    div {
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+    }
+
+    div a {
+        text-decoration: none;
+        color: rgba(0, 0, 0, 0.8);
+        font-size: 1.5rem;
+    }
+
+    div a:hover {
+        text-decoration: underline;
+        color: rgba(0, 0, 0, 1);
+        transition: 500ms ease;
+    }
+</style>
