@@ -1,9 +1,11 @@
 ---
 import Hamburger from './Hamburger.astro';
+import ThemeIcon from './ThemeIcon.astro';
 ---
-<header>
+<header id="main-header">
     <Hamburger />
-    <nav class="nav-links ">
+    <nav class="nav-links">
+        <ThemeIcon />
         <a href="/">Home</a>
         <a href="/about/">About</a>
         <a href="/blog/">Blog</a>
@@ -15,25 +17,24 @@ import Hamburger from './Hamburger.astro';
     header {
         display: flex;
         flex-direction: row;
+        color: #000;
     }
     nav {
         display: flex;
         width: 100%;
         padding: 0.5rem;
-        background-color: #1b1b1b;
     }
 
     nav a {
         display: flex;
         padding: 0.5rem;
         justify-items: center;
-        color: white;
         text-decoration: none;
         font-weight: bold;
     }
 
     nav a:hover {
-        background-color: #000;
+        text-decoration: underline;
     }
 
     .expanded {
