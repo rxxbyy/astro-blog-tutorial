@@ -1,8 +1,33 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 const { frontmatter }: Record<string, any> = Astro.props;
+const tags: Array<string> = frontmatter.tags;
 ---
 <BaseLayout pageTitle={frontmatter.title}>
-<p>Written by {frontmatter.author} on {frontmatter.pubDate.toString().slice(0, 10)}</p>
-<slot />
+    <p>Written by {frontmatter.author} on {frontmatter.pubDate.toString().slice(0, 10)}</p>
+
+    <div class="tags">
+        {tags.map((tag) => (
+            <p><a href={`/tags/${tag}`}>{tag}</a></p>
+        ))}
+    </div>
+
+    <slot />
 </BaseLayout>
+
+<style>
+    .tags {
+        display: flex;
+        flex-direction: row;
+        gap: 0.7rem;
+    }
+
+    .tags p a {
+        text-decoration: none;
+        padding: 10px;
+        background-color: #5a5a5a;
+        color: white;
+        border-radius: 5px;
+        font-size: 0.8rem;
+    }
+</style>
